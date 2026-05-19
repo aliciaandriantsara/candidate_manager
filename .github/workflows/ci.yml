@@ -1,3 +1,4 @@
+cat > ~/candidate-manager/.github/workflows/ci.yml << 'EOF'
 name: CI
 
 on:
@@ -42,36 +43,77 @@ jobs:
 
   frontend:
     runs-on: ubuntu-latest
+    services:
+      mongodb:
+        image: mongo:7
+        ports:
+          - 27017:27017
     steps:
       - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: backend/package-lock.json
+
+      - name: Install backend dependencies
+        run: npm ci
+        working-directory: backend
+
+      - name: Start backend
+        run: npm run dev &
+        working-directory: backend
+        env:
+          NODE_ENV: development
+          PORT: 3000
+          MONGODB_URI: mongodb://localhost:27017/candidate_manager_e2e
+          JWT_SECRET: ci-secret-min-32-characters-long!!
+          JWT_EXPIRES_IN: 1d
+          AUTH_EMAIL: admin@example.com
+          AUTH_PASSWORD: Admin123!
+          CORS_ORIGIN: http://localhost:4173
+          RATE_LIMIT_WINDOW_MS: 900000
+          RATE_LIMIT_MAX: 1000
+          VALIDATION_DELAY_MS: 0
+          LOG_LEVEL: debug
+
+      - name: Wait for backend
+        run: npx wait-on http://localhost:3000/health --timeout 30000
+
       - uses: actions/setup-node@v4
         with:
           node-version: "22"
           cache: npm
           cache-dependency-path: frontend/package-lock.json
-      - name: Install dependencies
+
+      - name: Install frontend dependencies
         run: npm ci
         working-directory: frontend
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
         working-directory: frontend
-      - name: Build
+
+      - name: Build frontend
         run: npm run build
         working-directory: frontend
+
       - name: Start vite preview
         run: npm run preview &
         working-directory: frontend
-        env:
-          CI: true
-      - name: Wait for server to be ready
+
+      - name: Wait for frontend
         run: npx wait-on http://localhost:4173 --timeout 30000
         working-directory: frontend
+
       - name: Run Playwright e2e tests
         run: npx playwright test
         working-directory: frontend
         env:
           CI: true
           PLAYWRIGHT_BASE_URL: http://localhost:4173
+
       - name: Upload Playwright report
         if: failure()
         uses: actions/upload-artifact@v4
@@ -79,3 +121,4 @@ jobs:
           name: playwright-report
           path: frontend/playwright-report/
           retention-days: 7
+EOF
