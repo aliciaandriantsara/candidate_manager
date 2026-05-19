@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1779217352794" clover="3.2.0">
+  <project timestamp="1779217352794" name="All files">
+    <metrics statements="74" coveredstatements="69" conditionals="29" coveredconditionals="20" methods="15" coveredmethods="15" elements="118" coveredelements="104" complexity="0" loc="74" ncloc="74" packages="2" files="3" classes="3"/>
+    <package name="models">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="Candidate.ts" path="/home/mioty/candidate-manager/backend/src/models/Candidate.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="38" count="5" type="stmt"/>
+        <line num="39" count="5" type="stmt"/>
+        <line num="41" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="services">
+      <metrics statements="69" coveredstatements="64" conditionals="29" coveredconditionals="20" methods="15" coveredmethods="15"/>
+      <file name="auth.service.ts" path="/home/mioty/candidate-manager/backend/src/services/auth.service.ts">
+        <metrics statements="20" coveredstatements="19" conditionals="12" coveredconditionals="8" methods="4" coveredmethods="4"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="19" count="19" type="cond" truecount="1" falsecount="0"/>
+        <line num="23" count="5" type="stmt"/>
+        <line num="26" count="14" type="stmt"/>
+        <line num="31" count="14" type="stmt"/>
+        <line num="35" count="14" type="stmt"/>
+        <line num="39" count="18" type="stmt"/>
+        <line num="40" count="18" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="47" count="4" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
+        <line num="49" count="3" type="cond" truecount="2" falsecount="1"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="53" count="3" type="stmt"/>
+      </file>
+      <file name="candidate.service.ts" path="/home/mioty/candidate-manager/backend/src/services/candidate.service.ts">
+        <metrics statements="49" coveredstatements="45" conditionals="17" coveredconditionals="12" methods="11" coveredmethods="11"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="2" count="4" type="stmt"/>
+        <line num="3" count="4" type="stmt"/>
+        <line num="6" count="15" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="2" type="stmt"/>
+        <line num="30" count="4" type="stmt"/>
+        <line num="31" count="4" type="stmt"/>
+        <line num="34" count="17" type="stmt"/>
+        <line num="35" count="17" type="stmt"/>
+        <line num="40" count="16" type="stmt"/>
+        <line num="42" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="50" count="0" type="stmt"/>
+        <line num="55" count="11" type="stmt"/>
+        <line num="56" count="9" type="stmt"/>
+        <line num="60" count="9" type="cond" truecount="1" falsecount="0"/>
+        <line num="61" count="3" type="stmt"/>
+        <line num="63" count="6" type="stmt"/>
+        <line num="67" count="4" type="stmt"/>
+        <line num="69" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="73" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="74" count="1" type="stmt"/>
+        <line num="75" count="1" type="stmt"/>
+        <line num="78" count="4" type="stmt"/>
+        <line num="80" count="4" type="stmt"/>
+        <line num="88" count="4" type="stmt"/>
+        <line num="98" count="2" type="stmt"/>
+        <line num="99" count="2" type="stmt"/>
+        <line num="105" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="106" count="0" type="stmt"/>
+        <line num="109" count="2" type="stmt"/>
+        <line num="113" count="2" type="stmt"/>
+        <line num="114" count="2" type="stmt"/>
+        <line num="120" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="121" count="0" type="stmt"/>
+        <line num="124" count="2" type="stmt"/>
+        <line num="128" count="4" type="stmt"/>
+        <line num="130" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="131" count="1" type="stmt"/>
+        <line num="134" count="3" type="stmt"/>
+        <line num="136" count="3" type="stmt"/>
+        <line num="142" count="3" type="cond" truecount="0" falsecount="1"/>
+        <line num="143" count="0" type="stmt"/>
+        <line num="146" count="3" type="stmt"/>
+        <line num="150" count="3" type="stmt"/>
+        <line num="154" count="4" type="stmt"/>
+        <line num="155" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="156" count="3" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
