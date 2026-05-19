@@ -1,10 +1,10 @@
-import '@testing-library/jest-dom';
+import * as matchers from '@testing-library/jest-dom/matchers';
+import { expect, afterAll, afterEach, beforeAll } from 'vitest';
 import 'vitest-axe/extend-expect';
-import { afterAll, afterEach, beforeAll, expect } from 'vitest';
 import { setupServer } from 'msw/node';
 import { handlers } from './mocks/handlers';
 
-expect; // ensure vitest expect is globally available
+expect.extend(matchers);
 
 export const server = setupServer(...handlers);
 beforeAll(() => server.listen({ onUnhandledRequest: 'error' }));
