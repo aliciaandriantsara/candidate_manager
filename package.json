@@ -1,0 +1,27 @@
+{
+  "name": "candidate-manager",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "lint-staged": "lint-staged"
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^15.3.0"
+  },
+  "lint-staged": {
+    "backend/**/*.{ts,tsx}": [
+      "bash -c 'cd backend && npx eslint --fix'",
+      "bash -c 'cd backend && npx prettier --write'",
+      "bash -c 'cd backend && npx tsc --noEmit'",
+      "bash -c 'cd backend && npm test -- --findRelatedTests --passWithNoTests'"
+    ],
+    "frontend/**/*.{ts,tsx}": [
+      "bash -c 'cd frontend && npx eslint --fix'",
+      "bash -c 'cd frontend && npx prettier --write'",
+      "bash -c 'cd frontend && npx tsc --noEmit'",
+      "bash -c 'cd frontend && npm test -- --run --passWithNoTests'"
+    ]
+  }
+}

@@ -1,0 +1,48 @@
+services:
+  mongodb:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-changeme}
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build:
+      context: ./backend
+      network: host
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      MONGODB_URI: mongodb://${MONGO_INITDB_ROOT_USERNAME:-admin}:${MONGO_INITDB_ROOT_PASSWORD:-changeme}@mongodb:27017/candidate_manager?authSource=admin
+      JWT_SECRET: ${JWT_SECRET:-change-this-to-a-long-random-string-min-32-chars}
+      JWT_EXPIRES_IN: ${JWT_EXPIRES_IN:-1d}
+      AUTH_EMAIL: ${AUTH_EMAIL:-admin@example.com}
+      AUTH_PASSWORD: ${AUTH_PASSWORD:-Admin123!}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:5173}
+      RATE_LIMIT_WINDOW_MS: ${RATE_LIMIT_WINDOW_MS:-900000}
+      RATE_LIMIT_MAX: ${RATE_LIMIT_MAX:-100}
+      VALIDATION_DELAY_MS: ${VALIDATION_DELAY_MS:-2000}
+    depends_on:
+      - mongodb
+
+  frontend:
+    build:
+      context: ./frontend
+      network: host
+      args:
+        VITE_API_URL: ${VITE_API_URL:-http://localhost:3000/api}
+    restart: unless-stopped
+    ports:
+      - '5173:5173'
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:

@@ -1,0 +1,16 @@
+# MongoDB uniquement — backend/frontend en local (réseau lent ou build Docker impossible)
+# Usage: docker compose -f docker-compose.dev.yml up -d
+services:
+  mongodb:
+    image: mongo:7
+    restart: unless-stopped
+    ports:
+      - '27017:27017'
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME:-admin}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD:-changeme}
+    volumes:
+      - mongo_data:/data/db
+
+volumes:
+  mongo_data:

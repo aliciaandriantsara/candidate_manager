@@ -1,0 +1,4 @@
+{
+  "_comment": "Ne pas remplacer tout /etc/docker/daemon.json sans sauvegarde. Sur Ubuntu, préférer 127.0.0.53 (systemd-resolved).",
+  "dns": ["127.0.0.53", "8.8.8.8", "1.1.1.1"]
+}
