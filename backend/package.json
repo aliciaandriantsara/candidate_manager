@@ -6,7 +6,7 @@
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "lint": "eslint src tests --ext .ts",
+    "lint": "eslint src tests",
     "format": "prettier --write \"src/**/*.ts\" \"tests/**/*.ts\"",
     "test": "NODE_ENV=test jest --runInBand",
     "test:unit": "NODE_ENV=test jest --runInBand tests/unit",
